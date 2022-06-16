@@ -1,16 +1,7 @@
 import React from 'react'
 import Card from './Card'
 
-const LocalStorageKey = 'NotesStorage';
-
 export default class NotesList extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            notes : JSON.parse(localStorage.getItem(LocalStorageKey)) ?? []
-        }
-    }
 
     render() {
         return (
@@ -18,28 +9,29 @@ export default class NotesList extends React.Component {
                 <h2 className='sect-title'>All Of Your Notes</h2>
                 <div className='notes-container'>
                     {
-                        localStorage.getItem(LocalStorageKey) 
-                        ? JSON.parse(localStorage.getItem(LocalStorageKey)).map((note, index) => {
-                            if (!note.archived) {
+                        this.props.notes.filter((note) => !note.archived).length 
+                        ? this.props.notes
+                            .filter((note) => !note.archived)
+                            .map((note, index) => {
                                 return (
-                                   <Card key={index} title={note.title}>{note.content}</Card>
+                                   <Card onArchiveEventHandler={this.props.onArchiveEventHandler} onDeleteEventHandler={this.props.onDeleteEventHandler} key={index} note={note} />
                                 )
-                            }
-                        }) 
+                            })
                         : <p>You have no notes yet.</p>
                     }
                 </div>
                 <h2 className='sect-title'>Archived Notes</h2>
                 <div className='notes-archived'>
                     {
-                        localStorage.getItem(LocalStorageKey) 
-                        ? JSON.parse(localStorage.getItem(LocalStorageKey)).map((note, index) => {
-                            if (note.archived) {
+                        this.props.notes
+                            .filter((note) => note.archived).length 
+                        ? this.props.notes
+                            .filter((note) => note.archived)
+                            .map((note, index) => {
                                 return (
-                                   <Card key={index} title={note.title}>{note.content}</Card>
+                                   <Card onArchiveEventHandler={this.props.onArchiveEventHandler} onDeleteEventHandler={this.props.onDeleteEventHandler} key={index} note={note} />
                                 )
-                            }
-                        }) 
+                            })
                         : <p>You have no notes yet.</p>
                     }
                 </div>

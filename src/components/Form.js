@@ -13,45 +13,38 @@ export default class Form extends React.Component {
     }
 
     onTitleChangedEventHandler(event) {
-        this.setState(prevState => {
-            return {
-                ...prevState,
-                title: event.target.value
-            }
+        this.setState({
+            title: event.target.value
         })
     }
 
     onContentChangedEventHandler(event) {
-        this.setState(prevState => {
-            return {
-                ...prevState,
-                content: event.target.value
-            }
+        this.setState({
+            content: event.target.value
         })
     }
-
+    /**
+     * 
+     * @param {SubmitEvent} event 
+     */
     onSubmitEventHandler(event) {
-        console.log(this.state);
-        pushLocalStorage(this.state);
-        this.setState({
-            title: '',
-            content: ''
-        })
+        event.preventDefault()
+        this.props.onAddNotesHandler(createNoteObject(this.state))
     }
 
     render() {
         return (
             <form onSubmit={this.onSubmitEventHandler.bind(this)}>
                 <h2>Add a Note</h2>
-                <input type="text" 
-                    placeholder="Note Title..." 
-                    maxLength={75} 
+                <input type="text"
+                    placeholder="Note Title..."
+                    maxLength={75}
                     required={true}
-                    value={this.state.title} 
+                    value={this.state.title}
                     onChange={this.onTitleChangedEventHandler.bind(this)} />
-                <textarea placeholder="..." 
+                <textarea placeholder="..."
                     required={true}
-                    value={this.state.content} 
+                    value={this.state.content}
                     onChange={this.onContentChangedEventHandler.bind(this)} >
                 </textarea>
                 <button type="submit">Add Note</button>
@@ -62,11 +55,12 @@ export default class Form extends React.Component {
 
 // Additional to Update Data in Local Storage
 
-function createNoteObject(data) {
+function createNoteObject({ title, content }) {
+    console.log(+new Date())
     return {
-        id : new Date().getTime(),
-        title: data.title,
-        content: data.content,
+        id: +new Date(),
+        title: title,
+        content: content,
         createdAt: new Date().toISOString(),
         archived: false
     }
