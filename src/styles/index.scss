@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --white : #f2f2f2;
+  --black : #222;
+  --gray : #888;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  min-height: 2000px;
+}
+
+button, input, textarea {
+  all: unset;
+}
+
+//? Nav Section
+
+nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 9999;
+  background-color: var(--black);
+  padding: 1rem 3rem;
+  box-shadow: 0 .1rem .1rem var(--white);
+
+  :first-child {
+    font-size: 2rem;
+  }
+
+  :last-child {
+    
+    border: .1px solid var(--white);
+    padding: .5rem;
+    border-radius: .25rem;
+    font-size: 1rem;
+    min-width: 25%;
+  }
+}
+
+//? Form Section
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  width: 50vw;
+  margin: 6rem auto 0;
+  border: .1rem solid var(--gray);
+  border-radius: .25rem;
+  padding: 1rem;
+
+  h2 {
+    margin: .25rem 0;
+  }
+  input, textarea {
+    
+    padding: .25rem .5rem;
+    margin: 0 .5rem;
+    border: .1rem solid var(--gray);
+    border-radius: .25rem;
+    width: 100%;
+  }
+  textarea {
+    min-height: 8rem;
+  }
+  button {
+    
+    margin-top: .5rem;
+    padding: .6rem 1.2rem;
+    border: .1rem solid var(--gray);
+    border-radius: .25rem;
+  }
+}
+
+//? Notes List Section
+
+.sect-title {
+  font-size: 2rem;
+  font-weight: bold;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.notes-container,
+.notes-archived {
+  display: grid;
+  width: 80%;
+  margin: 2rem auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  > * {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    border: .1rem solid var(--gray);
+    border-radius: .25rem;
+    padding: .5rem .75rem;
+    margin: .5rem;
+
+    span {
+      font-size: .8rem;
+      color: var(--gray);
+    }
+    :last-child {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: .75rem;
+      * {
+        border-radius: .25rem;
+        margin-top: .5rem;
+        border: .1px solid var(--white);
+        flex: 1;
+        text-align: center;
+        display: inline;
+        padding: .5rem;
+        text-shadow: 0 0 1px var(--gray);
+        cursor: pointer;
+      }
+      :first-child {
+        color: red;
+      }
+      :last-child {
+        color: yellow;
+      }
+    }
+  }
+}

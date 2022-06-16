@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --white: #f2f2f2;
+  --black: #222;
+  --gray: #888;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  min-height: 2000px;
+}
+
+button, input, textarea {
+  all: unset;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  z-index: 9999;
+  background-color: var(--black);
+  padding: 1rem 3rem;
+  -webkit-box-shadow: 0 0.1rem 0.1rem var(--white);
+          box-shadow: 0 0.1rem 0.1rem var(--white);
+}
+
+nav :first-child {
+  font-size: 2rem;
+}
+
+nav :last-child {
+  border: 0.1px solid var(--white);
+  padding: .5rem;
+  border-radius: .25rem;
+  font-size: 1rem;
+  min-width: 25%;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: .5rem;
+  width: 50vw;
+  margin: 6rem auto 0;
+  border: 0.1rem solid var(--gray);
+  border-radius: .25rem;
+  padding: 1rem;
+}
+
+form h2 {
+  margin: .25rem 0;
+}
+
+form input, form textarea {
+  padding: .25rem .5rem;
+  margin: 0 .5rem;
+  border: 0.1rem solid var(--gray);
+  border-radius: .25rem;
+  width: 100%;
+}
+
+form textarea {
+  min-height: 8rem;
+}
+
+form button {
+  margin-top: .5rem;
+  padding: .6rem 1.2rem;
+  border: 0.1rem solid var(--gray);
+  border-radius: .25rem;
+}
+
+.sect-title {
+  font-size: 2rem;
+  font-weight: bold;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.notes-container,
+.notes-archived {
+  display: -ms-grid;
+  display: grid;
+  width: 80%;
+  margin: 2rem auto;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.notes-container > *,
+.notes-archived > * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: .4rem;
+  border: 0.1rem solid var(--gray);
+  border-radius: .25rem;
+  padding: .5rem .75rem;
+  margin: .5rem;
+}
+
+.notes-container > * span,
+.notes-archived > * span {
+  font-size: .8rem;
+  color: var(--gray);
+}
+
+.notes-container > * :last-child,
+.notes-archived > * :last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  gap: .75rem;
+}
+
+.notes-container > * :last-child *,
+.notes-archived > * :last-child * {
+  border-radius: .25rem;
+  margin-top: .5rem;
+  border: 0.1px solid var(--white);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  display: inline;
+  padding: .5rem;
+  text-shadow: 0 0 1px var(--gray);
+  cursor: pointer;
+}
+
+.notes-container > * :last-child :first-child,
+.notes-archived > * :last-child :first-child {
+  color: red;
+}
+
+.notes-container > * :last-child :last-child,
+.notes-archived > * :last-child :last-child {
+  color: yellow;
+}
+/*# sourceMappingURL=index.css.map */
