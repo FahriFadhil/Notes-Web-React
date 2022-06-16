@@ -9,6 +9,24 @@ export default class NotesList extends React.Component {
             <Card title={"Notes Title"}>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
             </Card>
+            <Card title={"Notes Title"}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
+            </Card>
+            <Card title={"Notes Title"}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
+            </Card>
+            <Card title={"Notes Title"}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
+            </Card>
+            <Card title={"Notes Title"}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
+            </Card>
+            <Card title={"Notes Title"}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
+            </Card>
+            <Card title={"Notes Title"}>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
+            </Card>
         </div>
         <h2 className='sect-title'>Archived Notes</h2>
         <div className='notes-archived'>

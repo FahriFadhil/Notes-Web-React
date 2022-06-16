@@ -23,6 +23,15 @@ button, input, textarea {
   all: unset;
 }
 
+button {
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+button:hover {
+  background-color: gray;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -71,7 +80,7 @@ form {
   margin: 6rem auto 0;
   border: 0.1rem solid var(--gray);
   border-radius: .25rem;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 }
 
 form h2 {
@@ -91,6 +100,7 @@ form textarea {
 }
 
 form button {
+  cursor: pointer;
   margin-top: .5rem;
   padding: .6rem 1.2rem;
   border: 0.1rem solid var(--gray);
@@ -101,6 +111,7 @@ form button {
   font-size: 2rem;
   font-weight: bold;
   width: 80%;
+  max-width: 1440px;
   margin: 2rem auto;
 }
 
@@ -109,9 +120,10 @@ form button {
   display: -ms-grid;
   display: grid;
   width: 80%;
+  max-width: 1440px;
   margin: 2rem auto;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
@@ -172,5 +184,32 @@ form button {
 .notes-container > * :last-child :last-child,
 .notes-archived > * :last-child :last-child {
   color: yellow;
+}
+
+@media (max-width: 1024px) {
+  .notes-container,
+  .notes-archived {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+  .sect-title {
+    width: 94%;
+  }
+  form {
+    width: 94%;
+  }
+}
+
+@media (max-width: 525px) {
+  nav {
+    padding: 1rem .75rem;
+  }
+  .notes-container,
+  .notes-archived {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=index.css.map */

@@ -22,6 +22,12 @@ body {
 button, input, textarea {
   all: unset;
 }
+button {
+  transition: .5s;
+  &:hover {
+    background-color: gray;
+  }
+}
 
 //? Nav Section
 
@@ -62,7 +68,7 @@ form {
   margin: 6rem auto 0;
   border: .1rem solid var(--gray);
   border-radius: .25rem;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 
   h2 {
     margin: .25rem 0;
@@ -79,7 +85,7 @@ form {
     min-height: 8rem;
   }
   button {
-    
+    cursor: pointer;
     margin-top: .5rem;
     padding: .6rem 1.2rem;
     border: .1rem solid var(--gray);
@@ -93,6 +99,7 @@ form {
   font-size: 2rem;
   font-weight: bold;
   width: 80%;
+  max-width: 1440px;
   margin: 2rem auto;
 }
 
@@ -100,8 +107,9 @@ form {
 .notes-archived {
   display: grid;
   width: 80%;
+  max-width: 1440px;
   margin: 2rem auto;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 
   > * {
@@ -140,5 +148,30 @@ form {
         color: yellow;
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .notes-container,
+  .notes-archived {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+  .sect-title {
+    width: 94%;
+  }
+  form {
+    width: 94%;
+  }
+}
+
+@media (max-width: 525px) {
+  nav {
+    padding: 1rem .75rem;
+  }
+  .notes-container,
+  .notes-archived {
+    grid-template-columns: 1fr;
+    width: 100%;
   }
 }
