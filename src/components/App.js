@@ -8,12 +8,14 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props)
+    // Initialize the state with the notes from localStorage
     this.state = {
       notes: JSON.parse(localStorage.getItem(LocalStorageKey)) ?? [],
     }
   }
 
   onKeywordChangedEventListener(query) {
+    // reload data from local storage and filter it by the query
     this.setState({
       notes: JSON.parse(localStorage.getItem(LocalStorageKey)).filter(({ title, content }) => {
         return new RegExp(query, 'i').test(title) || new RegExp(query, 'i').test(content)
@@ -22,6 +24,7 @@ export default class App extends React.Component {
   }
 
   onAddNotesHandler(note) {
+    // Add the note to the state
     this.setState(() => {
       const notes = [...this.state.notes, note]
       localStorage.setItem(LocalStorageKey, JSON.stringify(notes))
@@ -32,6 +35,7 @@ export default class App extends React.Component {
   }
 
   onDeleteEventHandler(note) {
+    // Delete the note from the state by filtering out the note by id
     this.setState(() => {
       const notes = this.state.notes.filter(({id: noteId}) => noteId !== note.id)
       localStorage.setItem(LocalStorageKey, JSON.stringify(notes))
@@ -43,11 +47,10 @@ export default class App extends React.Component {
 
   onArchiveEventHandler({id: noteId}) {
     this.setState(() => {
-      console.log(this.state.notes)
+      // map the notes to a new array with the archived note
       const notes = this.state.notes.map((note) => {
         return noteId === note.id? { ...note, archived: !note.archived } : note
       })
-      console.log(notes)
       localStorage.setItem(LocalStorageKey, JSON.stringify(notes))
       return {
         notes

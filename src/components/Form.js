@@ -1,6 +1,5 @@
 import React from 'react'
-
-const LocalStorageKey = 'NotesStorage';
+import { createNoteObject } from '../utils/data';
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -24,7 +23,8 @@ export default class Form extends React.Component {
         })
     }
     /**
-     * 
+     * Handle the submit event of the form
+     * add notes to the parent component state
      * @param {SubmitEvent} event 
      */
     onSubmitEventHandler(event) {
@@ -51,23 +51,4 @@ export default class Form extends React.Component {
             </form>
         )
     }
-}
-
-// Additional to Update Data in Local Storage
-
-function createNoteObject({ title, content }) {
-    console.log(+new Date())
-    return {
-        id: +new Date(),
-        title: title,
-        content: content,
-        createdAt: new Date().toISOString(),
-        archived: false
-    }
-}
-
-function pushLocalStorage(data) {
-    let notes = JSON.parse(localStorage.getItem(LocalStorageKey)) ?? [];
-    notes.push(createNoteObject(data));
-    localStorage.setItem(LocalStorageKey, JSON.stringify(notes));
 }
