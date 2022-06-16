@@ -1,58 +1,49 @@
 import React from 'react'
+import Card from './Card'
+
+const LocalStorageKey = 'NotesStorage';
 
 export default class NotesList extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2 className='sect-title'>All Of Your Notes</h2>
-        <div className='notes-container'>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-        </div>
-        <h2 className='sect-title'>Archived Notes</h2>
-        <div className='notes-archived'>
-            <Card title={"Notes Title"}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, numquam reprehenderit ipsum eum earum ratione inventore, quo magni possimus facere provident itaque! Laboriosam laborum accusamus, numquam incidunt quae dignissimos pariatur.
-            </Card>
-        </div>
-      </div>
-    )
-  }
-}
+    constructor(props) {
+        super(props);
 
-function Card({ title, time = formattedTime(Date()), children }) {
-    return (
-        <div className='note-card'>
-            <h3>{title}</h3>
-            <span>{time}</span>
-            <p>{children}</p>
-            <div className='card-action'>
-                <button className='btn-act-del'>Delete</button>
-                <button className='btn-act-arch'>Archive</button>
+        this.state = {
+            notes : JSON.parse(localStorage.getItem(LocalStorageKey)) ?? []
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <h2 className='sect-title'>All Of Your Notes</h2>
+                <div className='notes-container'>
+                    {
+                        localStorage.getItem(LocalStorageKey) 
+                        ? JSON.parse(localStorage.getItem(LocalStorageKey)).map((note, index) => {
+                            if (!note.archived) {
+                                return (
+                                   <Card key={index} title={note.title}>{note.content}</Card>
+                                )
+                            }
+                        }) 
+                        : <p>You have no notes yet.</p>
+                    }
+                </div>
+                <h2 className='sect-title'>Archived Notes</h2>
+                <div className='notes-archived'>
+                    {
+                        localStorage.getItem(LocalStorageKey) 
+                        ? JSON.parse(localStorage.getItem(LocalStorageKey)).map((note, index) => {
+                            if (note.archived) {
+                                return (
+                                   <Card key={index} title={note.title}>{note.content}</Card>
+                                )
+                            }
+                        }) 
+                        : <p>You have no notes yet.</p>
+                    }
+                </div>
             </div>
-        </div>
-    )
-}
-
-function formattedTime(str) {
-    return str.substring(0, 16);
+        )
+    }
 }
