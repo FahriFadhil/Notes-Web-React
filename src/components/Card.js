@@ -10,7 +10,7 @@ export default class Card extends React.Component {
                 <p>{this.props.note.content}</p>
                 <div className='card-action'>
                     <button className='btn-act-del' onClick={() => this.props.onDeleteEventHandler(this.props.note)} >Delete</button>
-                    <button className='btn-act-arch' onClick={() => this.props.onArchiveEventHandler(this.props.note)} >Archive</button>
+                    <button className='btn-act-arch' onClick={() => this.props.onArchiveEventHandler(this.props.note)} >{this.props.note.archived? 'Unarchive' : 'Archive'}</button>
                 </div>
             </div>
         )
