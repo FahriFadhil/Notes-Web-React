@@ -2,15 +2,17 @@ import React from 'react';
 import Nav from './Nav';
 import Form from './Form';
 import NotesList from './NotesList';
+import data from '../data/notes.json';
 import { LocalStorageKey } from '../utils/constants';
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props)
-    // Initialize the state with the notes from localStorage
+    // Initialize the state with the notes from localStorage if it exists
+    // otherwise initialize it with the data from the json file
     this.state = {
-      notes: JSON.parse(localStorage.getItem(LocalStorageKey)) ?? [],
+      notes: JSON.parse(localStorage.getItem(LocalStorageKey)) ?? data ,
     }
   }
 

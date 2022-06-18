@@ -1,5 +1,5 @@
 import React from 'react'
-import { createNoteObject } from '../utils/data';
+import { createNoteObject } from '../data/data';
 
 export default class Form extends React.Component {
     constructor(props) {
