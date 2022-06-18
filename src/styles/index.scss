@@ -128,7 +128,7 @@ form {
     :last-child {
       display: flex;
       align-items: center;
-      width: 100%;
+      position: relative;
       gap: .75rem;
       * {
         border-radius: .25rem;
